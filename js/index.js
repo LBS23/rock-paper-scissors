@@ -1,3 +1,8 @@
+const btn = document.querySelectorAll("button");
+const human = document.querySelector(".human-score");
+const computer = document.querySelector(".computer-score");
+const rounds = document.querySelector(".round-played");
+const finalScore = document.querySelector("#final-score");
 
 function getComputerChoice() {
     let answer;
@@ -12,42 +17,74 @@ function getComputerChoice() {
         return "scissors";
     }
 }
-function getHumanChoice() {
-    let choice;
-    choice = prompt("Enter your choice: ")
-    return choice;
-}
-
 
 function playGame() {
-    let humanScore = 0;
     let computerScore = 0;
-    function playRound(humanChoice, computerChoice) {
-    humanChoice = humanChoice
-    computerChoice = computerChoice
-    if (computerChoice === "rock" && humanChoice === "scissors") {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-        computerScore++;
-    } 
-    else if (computerChoice === "scissors" && humanChoice === "paper") {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-        computerScore++;
+    let humanScore = 0;
+    let round = 0;
+    function playRound(computerC, humanC){
+        if (computerC.toLowerCase() === humanC.toLowerCase()){
+            computerScore +=1;
+            round += 1;
+            computer.textContent = `Computer Score: ${computerScore}`
+            human.textContent = `Your Score: ${humanScore}`
+            rounds.textContent = `Rounds Played: ${round}`
+        }
+        else if (computerC === "paper" && humanC === "rock"){
+            computerScore += 1;
+            round += 1;
+            computer.textContent = `Computer Score: ${computerScore}`;
+            human.textContent = `Your Score: ${humanScore}`;
+            rounds.textContent = `Rounds Played: ${round}`;
+        }
+        else if (computerC === "scissors" && humanC === "paper"){
+            computerScore += 1;
+            round +=1;
+            computer.textContent = `Computer Score: ${computerScore}`;
+            human.textContent = `Your Score: ${humanScore}`;
+            rounds.textContent = `Rounds Played: ${round}`;
+        }
+        else if (computerC === "rock" && humanC === "scissors") {
+            computerScore +=1;
+            round +=1;
+            computer.textContent = `Computer Score: ${computerScore}`;
+            human.textContent = `Your Score: ${humanScore}`;
+            rounds.textContent = `Rounds Played: ${round}`;
+        }
+        else {
+            humanScore +=1;
+            round +=1;
+            computer.textContent = `Computer Score: ${computerScore}`;
+            human.textContent = `Your Score: ${humanScore}`;
+            rounds.textContent = `Rounds Played: ${round}`;
+        }
     }
-    else if (computerChoice === "paper" && humanChoice === "rock") {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-        computerScore++;
-    }
-    else if (computerChoice === humanChoice) {
-        console.log(`It's a draw! both players chose ${humanChoice}`);
-    }
-    else {
-        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
-        humanScore++;
-    }
+        btn.forEach((button) => {
+            button.addEventListener('click', () =>{    
+                humanSelection = button.id;
+                comp = getComputerChoice();
+                playRound(comp,humanSelection);
+                console.log(round)
+                if (round == 5){
+                    btn.forEach((button) =>{
+                        button.disbaled = true;
+                        console.log(button.disabled)
+                        
+                    });
+                    if (humanScore > computerScore){
+                        finalScore.textContent = "Congrats, You Won!";
+                    }
+                    else {
+                        finalScore.textContent = "Unlucky, You Lose!";
+                    }
+                }
+        }
+        
+)})
 }
-    for (let round = 0; round <5; round++){
-    playRound(getHumanChoice(),getComputerChoice())
-    }
-}
+
+
+
+
 
 playGame()

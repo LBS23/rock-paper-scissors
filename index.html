@@ -4,8 +4,31 @@
         <meta charset="UTF-8">
         <meta lang="en">
         <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+        <div class="container">
+            <div class="round-played">
+                Round: 
+            </div>
+            <div class="scoreboard">
+                <div class="human-score">
+                    Your Score:
+                </div>
+                <div class="computer-score">
+                    Computer Score:
+                </div>
+            </div>
+            <div class="buttons">
+            <button class="rock" id="rock">Rock</button>
+            <button class="paper" id="paper">Paper</button>
+            <button class="scissors" id="scissors">Scissors</button>
+        </div>
+        <div class="results">
+            <p id="final-score"></p>
+        </div>
+    </div>
+    
         <script src="js/index.js"></script>
     </body>
 </html>

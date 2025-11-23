@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-self: stretch;
+    
+    
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+.rounds-played {
+    text-align: center;
+}
