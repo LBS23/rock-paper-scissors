@@ -17,43 +17,40 @@ function getComputerChoice() {
         return "scissors";
     }
 }
-
+let round = 0;
 function playGame() {
     let computerScore = 0;
     let humanScore = 0;
-    let round = 0;
     function playRound(computerC, humanC){
         if (computerC.toLowerCase() === humanC.toLowerCase()){
             computerScore +=1;
-            round += 1;
             computer.textContent = `Computer Score: ${computerScore}`
             human.textContent = `Your Score: ${humanScore}`
             rounds.textContent = `Rounds Played: ${round}`
         }
         else if (computerC === "paper" && humanC === "rock"){
             computerScore += 1;
-            round += 1;
+            
             computer.textContent = `Computer Score: ${computerScore}`;
             human.textContent = `Your Score: ${humanScore}`;
             rounds.textContent = `Rounds Played: ${round}`;
         }
         else if (computerC === "scissors" && humanC === "paper"){
             computerScore += 1;
-            round +=1;
+            
             computer.textContent = `Computer Score: ${computerScore}`;
             human.textContent = `Your Score: ${humanScore}`;
             rounds.textContent = `Rounds Played: ${round}`;
         }
         else if (computerC === "rock" && humanC === "scissors") {
             computerScore +=1;
-            round +=1;
+            
             computer.textContent = `Computer Score: ${computerScore}`;
             human.textContent = `Your Score: ${humanScore}`;
             rounds.textContent = `Rounds Played: ${round}`;
         }
         else {
             humanScore +=1;
-            round +=1;
             computer.textContent = `Computer Score: ${computerScore}`;
             human.textContent = `Your Score: ${humanScore}`;
             rounds.textContent = `Rounds Played: ${round}`;
@@ -62,12 +59,13 @@ function playGame() {
         btn.forEach((button) => {
             button.addEventListener('click', () =>{    
                 humanSelection = button.id;
+                round +=1;
                 comp = getComputerChoice();
                 playRound(comp,humanSelection);
                 console.log(round)
                 if (round == 5){
                     btn.forEach((button) =>{
-                        button.disbaled = true;
+                        button.disabled = true;
                         console.log(button.disabled)
                         
                     });
